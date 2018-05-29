@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Sparse deconvolution.org"
 date:   2018-05-28 22:40:40 -0400
 categories: jekyll update
 ---
