@@ -4,15 +4,6 @@ title: Packages
 permalink: /packages/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+1. For Matlab code of real data experiments, please clone from: [sbd/ipalm](https://github.com/sbdsphere/sbd-ipalm) (github link)
+2. Execute the following code in Matlab console
+	> sbd_example

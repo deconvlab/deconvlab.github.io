@@ -4,15 +4,7 @@ title: Datasets
 permalink: /datasets/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+1. *Electron microscopic imaging*: ???  
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+*Acknowledgement: Abhay Pasupathy*
+{: style="float:right; height:200px; width:200px; font-size: 60%; text-color: grey"}

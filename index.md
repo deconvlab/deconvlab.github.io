@@ -5,4 +5,10 @@
 layout: page
 ---
 
-Sparse blind deconvolution recovers a short kernel and the sparse activation map that
+>Sparse blind deconvolution is a problem of finding the repetitive and overlapping small patterns from a structured signal.
+{: style="color:gray; text-align: center;"}
+
+---
+
+![fig1](/assets/fig_realdata_rec.png) Defect signature of a microscopic image
+{: style="float:right; height:200px; width:200px; font-size: 60%; text-align: center"}

@@ -4,15 +4,5 @@ title: Papers
 permalink: /papers/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+*1. Zhang Y, Lau Y, Kuo HW, Cheung S, Pasupathy A, Wright J. On the global geometry of sphere-constrained sparse blind deconvolution. InProceedings of the IEEE Conference on Computer Vision and Pattern Recognition 2017 Jul 1 (pp. 4894-4902).* [[pdf](/assets/cvpr2017_final.pdf)]
+{:style="font-size: 80%"}
