@@ -15,7 +15,7 @@ $$
 where $\ast$ is the *convolution operator*, defined as
 
 $$
-  Y(i,j)=\sum_{p,q}A(p,q) \cdot X(i-p,j-q) 
+  \mathbf{Y}(i,j)=\sum_{p,q}\mathbf{A}(p,q) \cdot \mathbf{X}(i-p,j-q) 
 $$ 
 
 
