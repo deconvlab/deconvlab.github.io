@@ -6,11 +6,17 @@ mathjax: true
 ---
 ---
 ### 1. Formulate the problem:
-The sparse blind deconvolution observed signal $$\mathbf{Y}$$ as combination of short event signals $$\mathbf{A}_i$$. Each $$i$$-th signal activates at different time/location map $$\mathbf{X}_i$$. 
+The sparse blind deconvolution observed signal $\mathbf{Y}$ as combination of short event signals $\mathbf{A}_i$. Each $i$-th signal activates at different time/location map as $\mathbf{X}_i$. 
 
 $$
 \mathbf{Y} = \sum_{i=1}^K \mathbf{A}_i*\mathbf{X}_i + \mathbf{E}
 $$
+
+where $\ast$ is the *convolution operator*, defined as
+
+$$
+  Y(i,j)=\sum_{p,q}A(p,q) \cdot X(i-p,j-q) 
+$$ 
 
 
 
