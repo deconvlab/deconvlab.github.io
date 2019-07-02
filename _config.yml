@@ -1,5 +1,5 @@
 # Welcome to Jekyll!
-#
+
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
 # yourself editing this file very often, consider using Jekyll's data files
@@ -13,19 +13,23 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: SparseDeconvolution.org
+title: Sparse Deconvolution
+author: DeconvLab
 email: deconvlab@columbia.edu
-description: >- # this means to ignore newlines until "baseurl:"
-  Sparse blind deconvolution: Find out the shape of the event signals and where/when they occur.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://sparsedeconvolution.org" 
-github_username:  sbdsphere
+description: © This project is supported by Columbia University and National Science Foundation. All Rights Reserved.
+date: 07/01/2019
+
+minima:
+  # generate social links in footer
+  social_links:
+    github: sbdsphere
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
 theme: minima
 plugins:
-  - jekyll-feed
+ - jekyll-feed
+ - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

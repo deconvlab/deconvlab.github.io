@@ -1,0 +1,41 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+
+    <div class="row">
+    <div class="col-sm-3">
+      <ul class="contact-list">
+        {%- if site.author -%}
+          <li class="p-name">          
+          {{ site.author | escape }}    
+          </li>
+        {%- endif -%}
+          
+        {%- if site.email -%}
+          <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email | escape }}</a>
+          </li>
+        {%- endif -%}
+          
+        {%- if site.date -%}
+          <p style="font-size:70%; margin-top:10px;" >
+            Last update: {{ site.date | escape}}
+          </p>
+        {%- endif -%}
+
+      </ul>
+    </div>
+
+    <div class="col-sm-7">
+      <div class="social-links">
+      {%- include social.html -%}
+      </div>
+      <p style="font-size:70%; margin-top:14px" align="center">{{- site.description | escape -}}</p>
+    </div>
+
+    </div>
+  </div>
+  </div>
+
+</footer>

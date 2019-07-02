@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  
+  {%- include head.html -%}
+  
+  <body data-spy="scroll" data-target="#toc">
+    
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+      <div class="row">
+        
+        <div class="col-sm-1">
+          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+        
+        <div class="col-sm-2"></div>
+        
+        <div class="col-sm-7">
+            {{ content }}
+        </div>
+
+        </div>
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+
+
+
+
+</html>
