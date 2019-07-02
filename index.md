@@ -1,6 +1,6 @@
 ---
 layout: page
-mathjax: true
+ketex: true
 ---
 
 
@@ -14,7 +14,7 @@ mathjax: true
 
 ![fig1](/assets/fig_realdata_rec.png)
 Defect signature of an STM image for superconductor NaFeAs
-{: style="float:right; height:170px; width:170px; margin:2px 2px 0 0; font-size: 60%; text-align: center"}
+{: style="float:right; height:170px; width:170px; margin:2px 2px 0 0; font-size: 60%; text-aign: center"}
 
 Many signals appear in nature and in science can be effectively expressed as a sequence of repetitively occurring short pattern, which can be modeled as the convolution between a **short** event pattern and a **sparse** event occurrence map. Applications involving in information discovery from this type of signals oftentimes can be treated as to decompose both the short and the *sparse* convolving components simultaneously.  
 {: style="width:470px; text-align:justify"}
@@ -40,7 +40,7 @@ SaS deconvolution is related to the following problems:
 ## Algorithm Overview ##
 In fact, the algorithm for solving SaS deconvolution is surprisingly intuitive but effective. Let us assume the variable for short pattern as $\mathbf a$, and the variable for sparse map as $\mathbf x$, then to find the ground truth signal pairs $(\mathbf a_0, \mathbf x_0)$, one can simply minimize the follo problem:
 
-$$ \min_{\mathbf a\in\mathbb S^{p-1},\mathbf x\in\mathbb R^n} \lambda \|\mathbf x\|_1 $$
+\[ \min_{\mathbf a\in\mathbb S^{p-1},\mathbf x\in\mathbb R^n} \lambda \|\mathbf x\|_1 \]
 
 
 ## Papers ##
