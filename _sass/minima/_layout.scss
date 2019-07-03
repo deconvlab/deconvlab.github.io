@@ -277,9 +277,8 @@
     @include relative-font-size(1.375);
     font-family: $titie-font-family;
     padding-bottom: 5px;
-    margin-top: 23px;
-    margin-bottom:10px;
-    border-bottom: 1px solid $rule-color;
+    margin-top: 10px;
+    margin-bottom:0px;
     @media screen and (min-width: $on-large) {
       @include relative-font-size(1.625);
     }

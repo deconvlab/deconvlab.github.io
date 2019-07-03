@@ -14,20 +14,31 @@ ketex: true
 
 ![fig1](/assets/fig_realdata_rec.png)
 Defect signature of an STM image for superconductor NaFeAs
-{: style="float:right; height:170px; width:170px; margin:2px 2px 0 0; font-size: 60%; text-aign: center"}
+{: style="float:right; height:170px; width:170px; margin:2px 2px 0 0; font-size: 60%; text-align: center"}
 
-Many signals appear in nature and in science can be effectively expressed as a sequence of repetitively occurring short pattern, which can be modeled as the convolution between a **short** event pattern and a **sparse** event occurrence map. Applications involving in information discovery from this type of signals oftentimes can be treated as to decompose both the short and the *sparse* convolving components simultaneously.  
-{: style="width:470px; text-align:justify"}
+Many signals and datasets in a wide range of area can be effectively expressed as superposition of short and repeating pattern.  Data of the nature can be modeled as the convolution between a **short** event pattern and a **sparse** event occurrence map. Therefore, applications involving in information discovery from these signals oftentimes are treated as to decompose both *short and sparse* components *simultaneously*, even when both components are unknown.  
+{: style="width:473px; text-align:justify"}
 
-We call this problem **Short-and-Sparse (SaS) deconvolution**.
+We call this problem **short-and-sparse deconvolution**.
 {: style="width:470px; text-align:justify"}
 
 
 ## Examples ##
-SaS deconvolution is related to the following problems:
-* *Pattern recognition:*
-* *Sensor denoising:*
-* *Filtering of transient noise:* 
+Signals with short-and-sparse model arise naturally in a wide range of pactical applications. Depending on its context, the short pattern can be realized in vastly different ways, while the sparse map is usually signalling the occurance of short pattern in the temporal or spatial domain. For instance, the short pattern can of the result of: 
+{: style="text-align:justify"} 
+* Event occurance pattern
+* Point-spread-funciton of sensor
+* Repeating pattern in structure
+{: style="text-align:justify"}  
+
+In the following, we would like to present serveral  examples that exhibits strong distiction of short-and-sparse model. 
+
+### Neuron excitation pattern ###
+Neuron 
+
+### Natural image deblurring ###
+
+### Defects of superconductor ###
 
 
 ## Code Package ##
@@ -46,4 +57,7 @@ In fact, the algorithm for solving SaS deconvolution is surprisingly intuitive b
 ## Papers ##
 
 ## Upcoming ##
+
+
+#### References ####
 
