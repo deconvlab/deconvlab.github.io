@@ -154,7 +154,7 @@
 }
 
 .footer-col-wrapper {
-  @include relative-font-size(0.9375);
+  @include relative-font-size(0.93);
   color: $grey-color;
   @extend %clearfix;
 }
@@ -208,6 +208,7 @@
 .page-content {
   padding: $spacing-unit 0;
   flex: 1 0 auto;
+  text-align: justify;
 }
 
 .page-heading {
@@ -286,6 +287,7 @@
 
   h4 {
     @include relative-font-size(1.125);
+    margin-bottom: 2px;
     font-family: $titie-font-family;
     @media screen and (min-width: $on-large) {
       @include relative-font-size(1.25);
