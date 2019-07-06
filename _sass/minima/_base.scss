@@ -68,9 +68,10 @@ img {
 figure > img {
   display: block;
 }
-
 figcaption {
-  font-size: $small-font-size;
+  font-size: 60%;
+  font-style: italic;
+  margin-top: -10px;
 }
 
 
@@ -153,22 +154,22 @@ code {
   @include relative-font-size(0.9375);
   border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: $grey-color;
 }
-
-
 
 code {
   padding: 1px 5px;
 }
 
 
-
 pre {
+  background-color: $grey-color;
   padding: 8px 12px;
   overflow-x: auto;
+  border: 1px solid #8ab;
 
   > code {
+    color: $grey-color-dark;
     border: 0;
     padding-right: 0;
     padding-left: 0;
