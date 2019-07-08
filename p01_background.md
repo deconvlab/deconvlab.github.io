@@ -23,16 +23,30 @@ Interstingly, there is a intutive but important finding for SaS deconvolution: t
 
 For example, consider the following examples:
 
-[image]
+
+
+### Condition ###
+At first glance, solving both unknown convolution components from a given signal seems to be unattainable, which is apparently true for general deconvolution problem. However, if we know the observation is an outcome of convolution between short and sparse signals, then perhaps surprisingly, once all of the following conditions are satisfied, then short-and-sparse deconvolution turns out to becomes a well posed problem.
+
+1. *Short*: the short pattern is enough short compares to the observed signal. 
+2. *Incoherence*: all the shifts of the short pattern are not close to each other in $\ell^2$ distance.
+3. *Sparse*: The density of the support of sparse map is sufficiently low. 
+
+There is a catch here, if we push the condition to extreme, say if the pattern is so short and the map is sparse enough that most of the patterns are not overlapping, then short-and-sparse deconvolution problem becomes trivial----which simply boils down to looking for the isolated short signal as the ground troth short pattern. This extreme case does not apply to most of the practical scenarios, and a well designed algorithm should be able to solve short-and-sparse deconvolution even under other more complicated, non-trivial cases.
+
+### Solutions ###
+It is important to clarify what the "solutions" means in short-and-sparse deconvolution. Let us consider a noiseless model case where the observations signal $\mathbf y$ is exactly convolution of two signals: the short $\mathbf a_0$, and the sparse $\mathbf x_0$, as
+
+\\[ \mathbf y = \mathbf a_0 * \mathbf x_0 \\]
+
+
 
 
 
 ## Algorithm ##
-To our knowledge, there is a natural effective, and general purpose method for short-and-sparse deconvolution problem, which is via solving the following optimization problem:
 
-$$ \mathrm{min}_{\mathbf a\in\mathbb S^{p-1}, \mathbf x\in\mathbb R^n} \lambda \|\mathbf x\|_1 + \frac12 \|\mathbf a \ast \mathbf x - \mathbf y\|_2^2 $$
- 
-We call this formulation as *blinear Lasso*
+
+
 
 
 |            Sphere           |           Subspace          |

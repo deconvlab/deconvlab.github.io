@@ -34,7 +34,7 @@ In order to see how signals in practice fit into short-and-sparse convolution mo
 
 
 ### Neuron electric pulses ###
-Neurons communicate with each other using electric pulses. It is hypothesized that most of the sensory and cortical  neurons transmit information through the frequency of firing pulses [[1]](/#references), while in more complicated organization such as the brain, neurons communicate through the temporal patterns of bitstream of pulses [[2]](/#references). Meanwhile The firing patterns may depend on cellular organization, varies among the regions of the brain according to the roles they play. Thus it is important to extract both the pattern of neural excitation pulses (the short event signal) and its occurrence timing (the sparse map) in order to improve our understanding on nervous system. 
+Neurons communicate with each other using electric pulses. It is hypothesized that most of the sensory and cortical  neurons transmit information through the frequency of firing pulses [[1]](/#references), while in more complicated organization such as the brain, neurons communicate through the temporal patterns of bitstream of pulses [[2]](/#references). Meanwhile the firing patterns may depend on cellular organization, varies among the regions of the brain according to the roles they play. Thus it is important to extract both the pattern of neural excitation pulses (the short event signal) and its occurrence timing (the sparse map) in order to improve our understanding on nervous system. 
 
 ![fig2](/assets/fig_neuron_spikes.png)
 <figcaption>Calcium ions Ca<sup>2+</sup> generate various intracellular signals which control key functions ubiquitously in all neurons. In order to probe the neuron firing pattern, neuroscientists utilize chemical fluorescent calcium indicators to signal the activation of neuron via fluorescent microscope <a href="/#references">[3]</a>.</figcaption>
@@ -50,16 +50,48 @@ In a periodic crystalline structure, the positions of atoms or molecules occur o
 
 
 ### Natural image deblurring ###
-Image deblurring is a classical problem in natural image processing, where the goal is to remove the blurring artifact when taking an image in natural scenes cause by defocus aberration or motion blur from imaging devices (i.e. cameras). It is commonly acknowledged that many natural images are mainly consists of smooth subsections and sharp edges, meaning that the gradient of natural images tend of be spatially sparse [[6]](/#references). The blurring procedure on an image affects mostly on the parts of image with edges; therefore, the gradient of the blurry image can be effectively modeled as convolution between the short blurring kernel (the short event pattern) and the sparse gradients of the original sharp image (the sparse map). The deblurring of naturally image can be done via removing this blurring kernel utilizing the sparsity prior on image gradient.     
+Image deblurring is a classical problem in natural image processing, where the goal is to remove the blurring artifact when taking an image in natural scenes cause by defocus aberration or motion blur from imaging devices (i.e. cameras). It is commonly acknowledged that many natural images are mainly consists of smooth subsections and sharp edges, meaning that the gradient of natural images tends to be spatially sparse [[6]](/#references). The blurring procedure on an image affects mostly on the parts of image with edges; therefore, the gradient of the blurry image can be effectively modeled as convolution between the short blurring kernel (the short event pattern) and the sparse gradients of the original sharp image (the sparse map). Deblurring of natural image can be done via removing this blurring kernel with utilization of  the sparsity prior on image gradient.     
 
 ![fig4](/assets/fig_deblurring.png)
-<figcaption>An natural image is taken when the camera undergoes rapid movement, causing aperture </figcaption>
+<figcaption>An natural image is taken while the camera  undergoing rapid movement, causing a blurring effect on the received image with the blur kernel shaped as the moving trajectory. In most of such cases the blur kernel is unknown, thus the blind deconvolution procedure is required to restore the high resolution image.  </figcaption>
 
 
 ## Algorithm Overview ##
-In fact, the algorithm for solving SaS deconvolution is surprisingly intuitive but effective. Let us assume the variable for short pattern as $\mathbf a$, and the variable for sparse map as $\mathbf x$, then to find the ground truth signal pairs $(\mathbf a_0, \mathbf x_0)$, one can simply minimize the follo problem:
+Short-and-sparse deconvolution can be solved via surprisingly intuitive and simple algorithm, the algorithm finds one of the "symmetric solutions"---the shifted and scaled variant of the ground truth short and sparse components.
 
-\\[ \min_{\mathbf a\in\mathbb S^{p-1},\mathbf x\in\mathbb R^n} \lambda \|\mathbf x\|_1 \\]
+
+###  Symmetric Solutions ###
+Write the ground truth signal pair as the short  $\mathbf a_0 \in\mathbb R^p$ and the sparse $ \mathbf x_0\in\mathbb R^n$ $(p\ll n)$, where the observation $\mathbf y$ is the noiseless convolution between the two signals, namely 
+
+\\[\mathbf y = \mathbf a_0*\mathbf x_0. \tag{1} \\] 
+
+Then due to the intrinsic ambiguity of the short-and-sparse deconvolution, there will be multiple possibilities for the convolution of a short and sparse pairs forms $\mathbf y$ besids $\mathbf a_0*\mathbf x_0$. More importantly, these different signal pairs can be specified as the shifted and scaled version of ground truth $(\mathbf a_0, \mathbf x_0)$
+
+![img5](/assets/fig_conv.png)
+{: style="width:80%; display:block; margin:auto; margin-top:-1em; margin-bottom:1em"}
+<figcaption> The observation $\mathbf y$ (left) is the convolution of ground truth signals $(\mathbf a_0, \mathbf x_0)$ (right, top). If we shift the short $\mathbf a_0$ to the left, and the sparse $\mathbf x_0$ to the right by the same distance, the convolution of the new pair of signal (right, bot) also generates $\mathbf y$. </figcaption>
+
+Because of this ambiguity, it is impossible for us to find out the exact generating $(\mathbf a_0, \mathbf x_0)$ solely dependent on the observation $\mathbf y$. Nevertheless, in most of the applications, we are willing to know the shape of the short signal, or the pattern of the sparsity map; while the exact scaling of signals and the timing / location of the map is not quite interested. Hence we would glad to accept any shifts and scaled version of $(\mathbf a_0, \mathbf x_0)$ as the solution to short-and-sparse deconvolution, these are called as the symmetrtic solutions.  
+
+
+
+### Formulation ###
+To find the shifted and scaled variation of $\mathbf a_0\in\mathbb R^p$ and $\mathbf x_0\in\mathbb R^n$, the algorithm optimize two variables, the short pattern $\mathbf a\in\mathbb R^{3p}$ and the sparsity map $\mathbf x\in\mathbb R^{n+2p}$, with respect to  minimizing the objective that consists both (i). the sparsity of $\mathbf x$, and (ii). the data infidelity between observation $\mathbf y$ and the convolution $\mathbf a *\mathbf x$:
+
+
+\\[ \min_{\mathbf a\in\mathbb S^{3p-1},\, \mathbf x\in\mathbb R^{n+2p}} \overbrace{\lambda \lVert\mathbf x\rVert_1}^{\text{sparsity}} + \overbrace{\tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2}^{\text{data fidelity}}. \tag{2}  \\]
+
+It is fairly straight forward, but because of the symmetric solutions, there is some important detail need to be taken care of during minimization:
+
+
+1. *Sphere*: The algorithm asks to optimize the problem with the short variable $\mathbf a$ stays on an $\ell^2$-sphere, enforcing $\lVert \mathbf a\rVert_2=1$. Of course, the actual $\mathbf a_0$ may not have unit norm, which, due the the ambiguity, is something we will never know.
+
+2. *Zero Padding*: The algorithm optimize the  variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accomodate all possible shifted $(\mathbf a_0, \mathbf x_0)$ as  good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
+
+### Minimizing Algorithm ###
+The problem $(2)$ is a non-convex problem. The landscape of the objective is forged by the symmetric solutions---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, within some certain regions all of the local minimizers of the landscape are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
+
+1. *Initialization*: The signal 
 
 
 ## Code Package ##
