@@ -15,13 +15,11 @@ ketex: true
 
 ![fig1](/assets/fig_realdata_rec.png)
 *Repeating defect signature of an STM image for superconductor NaFeAs*
-{: style="float:right; height:27%; width:27%; margin:2px 2px 0 0; font-size: 60%"}
+{: style="float:right; height:27%; width:27%; margin:2px 0 0 10px; font-size: 60%"}
 
 Many signals and datasets in a wide range of area can be effectively expressed as superposition of short and repeating pattern.  Data of the nature is modeled as the convolution between a **short** event pattern and a **sparse** event occurrence map. Therefore, applications involving in information discovery from these signals oftentimes are treated as to decompose both short and sparse components simultaneously, even when both components are unknown.  
-{: style="width:71%"}
 
 We call this problem **short-and-sparse deconvolution**.
-{: style="width:71%"}
 
 
 
