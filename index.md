@@ -7,7 +7,7 @@ ketex: true
 {: style="color:gray; font-size:210%; text-align: left; font-family:"Goudy Old Style"; margin-top:-35px; margin-bottom:0px" }
 ---finding repeated patterns in signals  
 {: style="color:gray; font-size:160%; text-align: right; font-family:"Goudy Old Style"; margin-bottom:10px"}
-----------------------------------------------------------
+--------------------------------------------------------
 {: style="height:2px; color:#d0d0d0; background-color:#d0d0d0; margin-bottom:15px"}
 
 
@@ -82,27 +82,49 @@ To find the shifted and scaled variation of $\mathbf a_0\in\mathbb R^p$ and $\ma
 It is fairly straight forward, but because of the symmetric solutions, there is some important detail need to be taken care of during minimization:
 
 
-1. *Sphere*: The algorithm asks to optimize the problem with the short variable $\mathbf a$ stays on an $\ell^2$-sphere, enforcing $\lVert \mathbf a\rVert_2=1$. Of course, the actual $\mathbf a_0$ may not have unit norm, which, due the the ambiguity, is something we will never know.
+1. *Sphere*: The algorithm asks to optimize the problem with the short variable $\mathbf a$ stays on $\ell^2$-sphere, enforcing $\lVert \mathbf a\rVert_2=1$. Of course, the actual $\mathbf a_0$ may not have unit norm, which, due the the ambiguity, is something we will never know.
 
 2. *Zero Padding*: The algorithm optimize the  variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accomodate all possible shifted $(\mathbf a_0, \mathbf x_0)$ as  good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
 
 ### Minimizing Algorithm ###
-The problem $(2)$ is a non-convex problem. The landscape of the objective is forged by the symmetric solutions---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, within some certain regions all of the local minimizers of the landscape are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
+The problem $(2)$ is a non-convex problem. The landscape of the objective is forged by the symmetric solutions---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, all of the local minimizers of the landscape within some certain region are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
 
-1. *Initialization*: The signal 
+1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ close to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
 
+	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots, 0}^p, \mathbf y_1,\ldots \mathbf y_{p}, \overbrace{0,\ldots, 0}^p]$.  
+
+	* $\mathbf x^{(0)} = \mathrm{argmin}_{\mathbf x} \,\lambda \lVert x\rVert_1 + \tfrac12\lVert \mathbf a^{(0)}*\mathbf x - \mathbf y \rVert_2^2 $  
+
+2. *Mimimization*: Starting from the initializer, performing conventional alternation gradient descent on both variables $\mathbf a$ and $\mathbf x$ suffices to solve the problem. Here, the notion of gradient on $\mathbf a$ is Riemmanian, which is nothing special but the convential gradient defined over sphereical domain. Also, the penalty variable in $(2)$, $\lambda$, can be set according to the sparsity level $ \theta$ of the true map $\mathbf x_0$, such that $\lambda \lessapprox 1/\sqrt{p\theta}$.
 
 ## Code Package ##
-1. For Matlab code of real data experiments, please clone from: [sbd/ipalm](https://github.com/sbdsphere/sbd-ipalm)
-2. Execute the following code in Matlab console  
+The solver of short-and-sparse deconvolution (Matlab) can be downloaded from the following github link: 
 
-		$ sbd_example
+[https://github.com/sbdsphere/sbd-ipalm](https://github.com/sbdsphere/sbd-ipalm) 
+{:style="text-align:center"}
+
+To excesise the test code, please execute the following code in Matlab console:
+
+	$ sbd_example
 
 
-## Papers ##
+## Resources ##
+
+* Paper: 
+	* Theories on short-and-sparse deconvolution: [[Short Version](http://proceedings.mlr.press/v97/kuo19a/kuo19a.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]
+	* Algorithms and applications: [To appear]
+
+* Other media:
+	* Introduction on short-and-sparse deconvolution: [[slides](/assets/slides_SaSD.pdf)] [[poster](/assets/poster_SaSD.pdf)]  
 
 
 
+
+
+
+
+-------------------------------------------------------
+{: style="height:2px; color:#aaa; background-color:#aaa; margin-top: 3em; margin-bottom:-0.2em"}
 
 #### References ####
 
