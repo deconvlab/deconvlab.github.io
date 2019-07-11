@@ -17,12 +17,12 @@
   font-weight: 400;
   letter-spacing: -1px;
   margin-bottom: 0;
-  margin-right:21px;
-  float: right;
+  margin-left:45px;
+  float: left;
   font-variant:small-caps; 
 
   @include media-query($on-palm) {
-    padding-right: 45px;
+    padding-left: 2px;
   }
 
   &:visited {
