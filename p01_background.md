@@ -11,6 +11,7 @@ In the following, we will study an objective that approximates the effectively w
 
 
 ## Approximated Bilinear Lasso ##
+
 Recall the "bilinear-Lasso" formulation we introduced in [$(2)$](/#formulation) (with abusing the notation of dimension variables): 
 
 \\[ \min_{\mathbf a\in\mathbb S^{p-1},\, \mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2,  \\]
@@ -23,14 +24,14 @@ This objective still solves the short-and-sparse deconvolution, but requires mor
 
 \\[ \min_{\mathbf a\in\mathbb S^{p-1} } \varphi_{\text{ABL}}(\mathbf a) \;\;:=\;\;  \min_{\mathbf a\in\mathbb S^{p-1} }\left( \min_{\mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle\right). \\]
 
-
 As it turns out, the geometry of this objective will be indeed dictated by the solutions of problem, that is, the shifts of short ground truth $\mathbf a_0$. 
+
 
 
 ## From Shifts to Geometry ##
 
-
 ### Shifts of $\mathbf a_0$ ###
+
 From now on, we will assume the length of the true short signal $\mathbf a_0$ as $p_0$ with $3p_0\leq p$ where $p$ is the dimension of the space for short signal $\mathbf a$ we are optimizing over. Write the shift of $\mathbf a_0$ by location $i$ as $s_i[\mathbf a_0]$ and put it in the space of dimension $p$, we say
 
 \\[ s_i[\mathbf a_0]\,:=\, [\overbrace{0,\ldots,0}^{p+i},\mathbf a_0,\overbrace{0,\ldots,0}^{p-i}]  \\]
@@ -39,6 +40,7 @@ where $i\in \\{-p\ldots,p\\}$. [As we mentioned](/#symmetric-solutions), these s
 
 
 ### Geometry over shifts subspace ###
+
 Specifically, the geometry of $\varphi_{\text{ABL}}$ over the subspace formed by linear combination of a few shifts will exhibit a "symmetric structure". We will define a subspace spanned by the shifts of $\mathbf a_0$,  $s_{\ell_1}[\mathbf a_0],\ldots, s_{\ell_t}[\mathbf a_0]$,  as:
 
 \\[ \mathcal S_{\\{\ell_1,\ldots,\ell_t\\}} \,:=\, \mathrm{span}\\{s_{\ell_1}[\mathbf a_0],\ldots, s_{\ell_t}[\mathbf a_0]\\}. \\]
@@ -67,8 +69,8 @@ Finally, we want to list the key findings base on the investigation of this geom
 * *Positive Curvature:* Away from the subspace, the function value of $\varphi_{\text{ABL}}$ will be growing, meaning that the minimizing algorithm will stay trapped near the subspace over iterates. 
 
 
-
 ### Geometry over union of subspaces ###
+
 The preferable geometry of $\varphi_{\text{ABL}}$ for the minimization algorithm to solve the short-and-sparse deconvolution does not hold only for a single subspace, but for any subspace formed by span of any different combination of shifts: 
 
 ![](/assets/fig_union_subspace.png)
@@ -79,7 +81,10 @@ We provide a pictorial example once again, as it shows the geometry of $\varphi_
 
 
 
+
+
 ## When is SaSD Solvable? ##
+
 Apparently, the short-and-sparse deconvolution problem cannot be solved under arbitrary condition, such as cases when $\mathbf a_0$ / $\mathbf x_0$ are not sufficiently short and sparse; moreover, there has been studies showing even  with sparsity prior for the convolving components the deconvolution problem is unsolvable up to scaled and shift symmetry <sub>(if $\mathbf a_0, \mathbf x_0$ has specific sparse support pattern)</sub> [[1]](/background/#references). Nevertheless, generally speaking,  short-and-sparse deconvolution can not only be solved, but also efficiently, when all the following conditions are satisfied:  
 
 1. *Short*: $\mathbf a_0$ is enough short compares to the observed signal. 
@@ -92,22 +97,22 @@ There is a catch here, if we push the condition to extreme, say if the pattern i
 
 
 ### Shift coherence of $\mathbf a_0$ ###
+
 Short-and-sparse deconvolution becomes an easier problem if the short $\mathbf a_0$ is more shift-incoherent. The coherence $\mu(\mathbf a_0)\in[0,1]$ is simply defined as the largest absolute inner-product between all different  shift pairs, namely
 
 \\[ \mu(\mathbf a_0) \,:=\, \max_{i\neq j}\; \lvert\langle s_i[\mathbf a_0], s_j[\mathbf a_0] \rangle\rvert. \\] 
 
 $\mu(\mathbf a_0)$ characterizes the difference between the solutions of short-and-sparse deconvolution: if the coherence is larger $\mu(\mathbf a_0)\nearrow 1$, then there are two shifts being closer on the sphere, which will be harder for the algorithm to distinguish whether the shift of $\mathbf a_0$ is fitting to solve the problem. Geometrically speaking, the closer these shifts are, the easier a bad local minimizer may be created in between the shift, and the algorithm could wrongly report this minimizer, the linear combination of shifts, as the solution.
 
-
 ![fig](/assets/fig_coherence.png)
 {: style="width:90%; display:block; margin:auto; margin-bottom:0.8em; margin-top:1.5em"}
 <figcaption> When $\mathbf a_0$ has low shift-coherence such as a single spike, the short-and-sparse deconvolution is easier, while if $\mathbf a_0$ is a smooth function, the shift-coherence is closer to one and the problem is more difficult. </figcaption>
-
 
 Generally speaking, if the spectrum of the short $\mathbf a_0$ is biased (when $\mathbf a_0$ is lowpass, highpass, etc.), then the coherence of $\mathbf a_0$ tends to become larger, and vice versa.
 
 
 ### Sparsity of $\mathbf x_0$ ###
+
 We characterize the sparsity of $\mathbf x_0$ by assuming it to be a random vector whose entries are subordinate to Bernoulli-Gaussian distribution with support activation rate $\theta$. 
 
 \\[ \mathbf x_0 \sim_{\text{i.i.d.}}\text{BG}(\theta) \\]
@@ -122,6 +127,7 @@ As expected, when the sparsity $\theta$ is higher, the short-and-sparse deconvol
 
 
 ### Sparsity-coherence tradeoff ###
+
 We can further articulate these conditions for solving short-and-sparse deconvolution through "sparsity-coherence tradeoff". That is, the deconvolution problem becomes easier to solve when either the short $\mathbf a_0$ has low coherence $\mu(\mathbf a_0) \searrow 0$ or the sparsity of $\mathbf x_0$ is lower $\theta \searrow 1/p_0$. If the short $\mathbf a_0$ has low shift-coherence, then the sparsity of $\mathbf x_0$ is allowable to larger, and if  $\mathbf a_0$ turns out to be smoother and low-pass, then the allowable of $\mathbf x_0$ has to be lower. 
 
 ![img](/assets/fig_sparsity_coherence_tradeoff.png)
@@ -133,6 +139,7 @@ The understanding of how the geometry of $\varphi_{\text{ABL}}$ is shaped by the
 
 
 ### Initialization in union of subspace ###
+
 Let us consider a case where the observation of noiseless $\mathbf y$ consists of isolated, non-overlapping $\mathbf a_0$. In this trivial case, solving the deconvolution problem becomes finding the isolated copy of the short signal $\mathbf a_0$, which can be done via locating the shortest continuous segment of $\mathbf y$, simple as it can possibly be. This algorithm, though, is unrealistic in even slightly more general cases, when $\mathbf y$ contains noise or $\mathbf x_0$ has higher sparsity. 
 
  Nevertheless, we can still adopt this idea under realistic scenarios when $\mathbf y$ contains noise and overlapping $\mathbf a_0$ by seeing that, due to the sparsity of $\mathbf x_0$,  a chunk of data $[\mathbf y_1,\ldots,\mathbf y_p]$ will contain only a few shifts of $\mathbf a_0$. This observation implies that a chunk of $\mathbf y$ will be closer to the set of the shifts, and will be close to the shift subspace where $\varphi_{\text{ABL}}$ has nice geometry.
