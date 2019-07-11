@@ -56,3 +56,10 @@ $on-large:         $on-laptop !default;
   "minima/layout",
   "minima/syntax-highlighting"
 ;
+
+@media (max-width: 800px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
