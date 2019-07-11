@@ -91,7 +91,7 @@ The problem $(2)$ is a non-convex problem. The landscape of the objective is for
 
 1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ closer to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a normalized  chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
 
-	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots, 0}^p, \mathbf y_1,\ldots \mathbf y_{p} , \overbrace{0,\ldots, 0}^p] \,/ \,\lVert[\mathbf y_1,\ldots,\mathbf y_p]\rVert_2$.  
+	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots,\, 0}^p, \mathbf y_1,\ldots \mathbf y_{p} , \overbrace{0,\ldots,\, 0}^p] \,/ \,\lVert[\mathbf y_1,\ldots,\,\mathbf y_p]\rVert_2$.  
 
 	* $\mathbf x^{(0)} = \mathrm{argmin}_{\mathbf x} \,\lambda \lVert x\rVert_1 + \tfrac12\lVert \mathbf a^{(0)}*\mathbf x - \mathbf y \rVert_2^2 $  
 

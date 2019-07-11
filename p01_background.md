@@ -21,7 +21,7 @@ Recall the "bilinear-Lasso" formulation we introduced in [$(2)$](/#formulation) 
 
 This objective still solves the short-and-sparse deconvolution, but requires more stringent signal conditions and larger sample size (longer signal $\mathbf y$); nevertheless, the geometry of this objective  represents that of the bilinear-Lasso well and therefore it draws our attention to study it. Specifically, we will investigate the effect of the symmetric solutions of short signal $\mathbf a$ on the objective landscape $\varphi_{\text{ABL}}$, the marginal minimization version of $(3)$, over the sphere $\mathbb S^{p-1}$: 
 
-\\[ \min_{\mathbf a\in\mathbb S^{p-1} } \varphi_{\text{ABL}}(\mathbf a) \;\;:=\;\;  \min_{\mathbf a\in\mathbb S^{p-1} }\left( \min_{\mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle\right).  \tag{4}  \\]
+\\[ \min_{\mathbf a\in\mathbb S^{p-1} } \varphi_{\text{ABL}}(\mathbf a) \;\;:=\;\;  \min_{\mathbf a\in\mathbb S^{p-1} }\left( \min_{\mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle\right). \\]
 
 
 As it turns out, the geometry of this objective will be indeed dictated by the solutions of problem, that is, the shifts of short ground truth $\mathbf a_0$. 
@@ -41,7 +41,7 @@ where $i\in \\{-p\ldots,p\\}$. [As we mentioned](/#symmetric-solutions), these s
 ### Geometry over shifts subspace ###
 Specifically, the geometry of $\varphi_{\text{ABL}}$ over the subspace formed by linear combination of a few shifts will exhibit a "symmetric structure". We will define a subspace spanned by the shifts of $\mathbf a_0$,  $s_{\ell_1}[\mathbf a_0],\ldots, s_{\ell_t}[\mathbf a_0]$,  as:
 
-\\[ \mathcal S_{\\{\ell_1,\ldots,\ell_t\\}} \,:=\, \mathrm{span}\\{s_{\ell_1}[\mathbf a_0],\ldots, s_{\ell_t}[\mathbf a_0]\\} \tag{5}. \\]
+\\[ \mathcal S_{\\{\ell_1,\ldots,\ell_t\\}} \,:=\, \mathrm{span}\\{s_{\ell_1}[\mathbf a_0],\ldots, s_{\ell_t}[\mathbf a_0]\\}. \\]
 
 As it turns out, these symmetric structure of landscape for $\varphi_{\text{ABL}}$ over $ \mathcal S_{\\{\ell_1,\ldots,\ell_t\\}}\cap \mathbb S^{p-1}$ will be feasible for optimization when several conditions of ground truth signals $(\mathbf a_0,\mathbf x_0)$ are satisfied.
 
