@@ -69,7 +69,7 @@ Then due to the intrinsic ambiguity of the short-and-sparse deconvolution, there
 {: style="width:80%; display:block; margin:auto; margin-top:-1em; margin-bottom:1em"}
 <figcaption> The observation $\mathbf y$ (left) is the convolution of ground truth signals $(\mathbf a_0, \mathbf x_0)$ (right, top). If we shift the short $\mathbf a_0$ to the left, and the sparse $\mathbf x_0$ to the right by the same distance, the convolution of the new pair of signal (right, bot) also generates $\mathbf y$. </figcaption>
 
-Because of this ambiguity, it is impossible for us to find out the exact generating $(\mathbf a_0, \mathbf x_0)$ solely dependent on the observation $\mathbf y$. Nevertheless, in most of the applications, we are willing to know the shape of the short signal, or the pattern of the sparsity map; while the exact scaling of signals and the timing / location of the map is not quite interested. Hence we would glad to accept any shifts and scaled version of $(\mathbf a_0, \mathbf x_0)$ as the solution to short-and-sparse deconvolution, these are called as the symmetrtic solutions.  
+Because of this ambiguity, it is impossible for us to find out the exact generating $(\mathbf a_0, \mathbf x_0)$ solely dependent on the observation $\mathbf y$. Nevertheless, in most of the applications, we are willing to know the shape of the short signal, or the pattern of the sparsity map; while the exact scaling of signals and the timing / location of the map is not quite interested. Hence we would glad to accept any shifts and scaled version of $(\mathbf a_0, \mathbf x_0)$ as the solution to short-and-sparse deconvolution, these are called as the symmetric solutions.  
 
 
 
@@ -84,18 +84,18 @@ It is fairly straight forward, but because of the symmetric solutions, there is 
 
 1. *Sphere*: The algorithm asks to optimize the problem with the short variable $\mathbf a$ stays on $\ell^2$-sphere, enforcing $\lVert \mathbf a\rVert_2=1$. Of course, the actual $\mathbf a_0$ may not have unit norm, which, due the the ambiguity, is something we will never know.
 
-2. *Zero Padding*: The algorithm optimize the  variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accomodate all possible shifted $(\mathbf a_0, \mathbf x_0)$ as  good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
+2. *Zero Padding*: The algorithm optimize the  variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accommodate all possible shifted $(\mathbf a_0, \mathbf x_0)$ as  good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
 
 ### Minimizing Algorithm ###
 The problem $(2)$ is a non-convex problem. The landscape of the objective is forged by the symmetric solutions---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, all of the local minimizers of the landscape within some certain region are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
 
-1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ close to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
+1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ closer to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a normalized  chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
 
-	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots, 0}^p, \mathbf y_1,\ldots \mathbf y_{p}, \overbrace{0,\ldots, 0}^p]$.  
+	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots, 0}^p, \mathbf y_1,\ldots \mathbf y_{p} , \overbrace{0,\ldots, 0}^p] \,/ \,\lVert[\mathbf y_1,\ldots,\mathbf y_p]\rVert_2$.  
 
 	* $\mathbf x^{(0)} = \mathrm{argmin}_{\mathbf x} \,\lambda \lVert x\rVert_1 + \tfrac12\lVert \mathbf a^{(0)}*\mathbf x - \mathbf y \rVert_2^2 $  
 
-2. *Mimimization*: Starting from the initializer, performing conventional alternation gradient descent on both variables $\mathbf a$ and $\mathbf x$ suffices to solve the problem. Here, the notion of gradient on $\mathbf a$ is Riemmanian, which is nothing special but the convential gradient defined over sphereical domain. Also, the penalty variable in $(2)$, $\lambda$, can be set according to the sparsity level $ \theta$ of the true map $\mathbf x_0$, such that $\lambda \lessapprox 1/\sqrt{p\theta}$.
+2. *Minimization*: Starting from the initializer, performing conventional alternation gradient descent on both variables $\mathbf a$ and $\mathbf x$ suffices to solve the problem. Here, the notion of gradient on $\mathbf a$ is Riemmanian, which is nothing special but the conventional gradient defined over spherical domain. Also, the penalty variable in $(2)$, $\lambda$, can be set according to the sparsity level $ \theta$ of the true map $\mathbf x_0$, such that $\lambda \lessapprox 1/\sqrt{p\theta}$.
 
 ## Code Package ##
 The solver of short-and-sparse deconvolution (Matlab) can be downloaded from the following github link: 
@@ -103,7 +103,7 @@ The solver of short-and-sparse deconvolution (Matlab) can be downloaded from the
 [https://github.com/sbdsphere/sbd-ipalm](https://github.com/sbdsphere/sbd-ipalm) 
 {:style="text-align:center"}
 
-To excesise the test code, please execute the following code in Matlab console:
+To exercise the test code, please execute the following code in Matlab console:
 
 	$ sbd_example
 
