@@ -25,7 +25,7 @@ $table-text-align: left !default;
 // Width of the content area
 $content-width:    1280px !default;
 
-$on-palm:          800px !default;
+$on-palm:          600px !default;
 $on-laptop:        1280px !default;
 
 $on-medium:        $on-palm !default;
@@ -57,7 +57,7 @@ $on-large:         $on-laptop !default;
   "minima/syntax-highlighting"
 ;
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .hidden-sm {
     display: none !important;
   }

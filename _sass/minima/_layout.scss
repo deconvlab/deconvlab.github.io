@@ -7,6 +7,7 @@
   background-color: $grey-color-light;
   min-height: $spacing-unit * 1.865;
   line-height: $base-line-height * $base-font-size * 2.25;
+  z-index: 9999;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -20,9 +21,11 @@
   margin-left:45px;
   float: left;
   font-variant:small-caps; 
+  z-index: 1;
 
   @include media-query($on-palm) {
-    padding-left: 2px;
+    position:absolute;
+    margin-left:2px;
   }
 
   &:visited {
@@ -33,11 +36,9 @@
 
 .site-nav {
   position: absolute;
-  top: 1px;
+  top: 4px;
   right: $spacing-unit / 2;
-  background-color: $background-color;
-  border: 1px solid $grey-color-light;
-  border-radius: 5px;
+  background-color: $grey-color-light;
   text-align: right;
 
   .nav-trigger {
@@ -49,7 +50,7 @@
     width: 36px;
     height: 26px;
     line-height: 0;
-    padding-top: 10px;
+    padding-top: 14px;
     text-align: center;
 
     > svg path {
@@ -62,7 +63,7 @@
     display: block;
     float: right;
     width: 36px;
-    height: 36px;
+    height: 40px;
     z-index: 2;
     cursor: pointer;
   }
@@ -74,23 +75,22 @@
 
   input:checked ~ .trigger {
     display: block;
+    padding-top: 5px;
     padding-bottom: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   }
+
 
   .page-link {
     @include relative-font-size(1.1);
     color: $text-color;
     line-height: $base-line-height;
     display: block;
-    padding: 5px 10px;
+    padding: 5px 0px;
     font-variant:small-caps; 
 
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 0;
-    }
+    margin-right: 20px;
     margin-left: 20px;
-
 
     &:hover {
     color:  #4d004d;
@@ -103,7 +103,6 @@
     position: static;
     float: right;
     border: none;
-    background-color: inherit;
 
     label[for="nav-trigger"] {
       display: none;
@@ -121,10 +120,8 @@
       display: inline;
       padding: 0;
 
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-      margin-left: auto;
+      margin-right:0;
+      margin-left: 25px;
     }
   }
 }
@@ -208,7 +205,10 @@
 .page-content {
   padding: $spacing-unit 0;
   flex: 1 0 auto;
-  text-align: justify;
+  text-align: left;
+  @media screen and (min-width: $on-medium) {
+    text-align: justify;
+  }
 }
 
 .page-heading {
