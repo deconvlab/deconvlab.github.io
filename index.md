@@ -20,6 +20,7 @@ Many signals and datasets in a wide range of area can be effectively expressed a
 We call this problem **short-and-sparse deconvolution**.
 
 
+
 ## Examples ##
 
 Signals of short-and-sparse model arise naturally in a wide range of practical applications. Depending on its context, the short pattern can be realized in vastly different ways, including the excite pattern of a triggered event, the impulse function of a linear system, or simply the reoccurring pattern from a structural data. Meanwhile, the occurrence map is usually signaling the appearance of such short pattern over the domain of the signal, which in most cases resides in either temporal or spatial domain sparingly. 
@@ -29,19 +30,18 @@ In order to see how signals in practice fit into short-and-sparse convolution mo
 
 ### Neuron electric pulses ###
 
-Neurons communicate with each other using electric pulses. It is hypothesized that most of the sensory and cortical  neurons transmit information through the frequency of firing pulses [[1]](/#references), while in more complicated organization such as the brain, neurons communicate through the temporal patterns of bitstream of pulses [[2]](/#references). Meanwhile the firing patterns may depend on cellular organization, varies among the regions of the brain according to the roles they play. Thus it is important to extract both the pattern of neural excitation pulses (the short event signal) and its occurrence timing (the sparse map) in order to improve our understanding on nervous system. 
+Neurons communicate with each other using electric pulses. It is hypothesized that most of the neurons transmit information through the frequency [[1]](/#references) or the temporal patterns from the firing pulses [[2]](/#references). Meanwhile, the firing patterns of the neurons may be varying depend on different cellular organization or brain sections. Thus, neuron electric signals can be effectively modeled as deconvolution for both the pattern of neural excitation pulses (the short event signal) and its occurrence timing (the sparse map). 
 
 ![fig2](/assets/fig_neuron_spikes.png)
-<figcaption>Calcium ions Ca<sup>2+</sup> generate various intracellular signals which control key functions ubiquitously in all neurons. In order to probe the neuron firing pattern, neuroscientists utilize chemical fluorescent calcium indicators to signal the activation of neuron via fluorescent microscope <a href="/#references">[3]</a>.</figcaption>
-
+<figcaption>Calcium ions Ca<sup>2+</sup> generate various intracellular signals which control key functions ubiquitously in all neurons. In order to probe the neuron firing patterns, neuroscientists utilize chemical fluorescent calcium indicators to signal the activation of neuron via fluorescent microscope <a href="/#references">[3]</a>.</figcaption>
 
 
 ### Defects in crystal ###
 
-In a periodic crystalline structure, the positions of atoms or molecules occur on repeating fixed distances. However, the arrangement in most crystalline materials is not perfect, where the regular patterns are interrupted by defects / vacancies / impurities [[4]](/#references). Characterization of these atomic defects including the pattern (the short event signal) and the defect locations (the sparse map) is important for fundamental understanding of the bulk electronic and mechanical properties for the material, which has wide range of applications in study of semiconductor, superconductor, etc.
+In a periodic crystalline structure, the positions of atoms or molecules occur on repeating fixed distances. However, the arrangement in most crystalline materials is not perfect, where the regular patterns are interrupted by defects / vacancies / impurities [[4]](/#references). Characterization of these atomic defects including the pattern (the short event signal) and the defect locations (the sparse map) affects the bulk electronic and mechanical properties for the materials such as semiconductor, superconductor, etc.
 
 ![fig3](/assets/fig_crystal.png)
-<figcaption>The microscopic image of high temperature superconductor polycrystalline NaFeAs under transmission electron microscope (TEM). The superconductivity of iron-based material is often directly related to a nematic state where the symmetry of crystal is broken, therefore it is of great interest for researchers in material science  to study its defect pattern and structure.   <a href="/#references">[5]</a>.</figcaption>
+<figcaption>The microscopic image of high temperature superconductor polycrystalline NaFeAs under scanning tunneling microscope (STM). The superconductivity of iron-based material is often related to a nematic state where the symmetry of crystal is broken, creating defects of specific pattern within the structure, which can be characterized using short-and-sparse convolution model. <a href="/#references">[5]</a>.</figcaption>
 
 
 
@@ -56,7 +56,9 @@ Image deblurring is a classical problem in natural image processing, where the g
 
 ## Algorithm Overview ##
 
-Short-and-sparse deconvolution can be solved via surprisingly intuitive and simple algorithm, the algorithm finds one of the "symmetric solutions"---the shifted and scaled variant of the ground truth short and sparse components.
+Short-and-sparse deconvolution can be solved via intuitive and simple algorithm. Many variations of algorithm has been proposed under various problem setting, tailored to suit the specific need with prior knowledge of signal structure.  
+
+Here, we will introduce a general purpose algorithm for short-and-sparse deconvolution. The most important feature, is that the algorithm finds one of the "symmetric solutions"---the shifted and scaled variant of the ground truth short and sparse components.
 
 
 ###  Symmetric Solutions ###
