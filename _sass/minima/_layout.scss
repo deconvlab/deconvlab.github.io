@@ -340,3 +340,35 @@
   margin-bottom:0.3em;
   margin-top:0.3em;
 }
+
+
+/**
+ * Paper
+ */
+.title{
+  font-size: 100%;
+  margin:0 0 0 0;
+}
+
+.author{
+  font-size:90%;
+  padding: 0 0 0 20px;
+  margin: 0 0 0 0;
+}
+
+.booktitle{
+  font-style:italic;
+  font-size:90%;
+  padding: 0 0 0 20px;
+  margin: 0 0 0 0;
+}
+
+
+.bibtex{
+  display: none;
+  width: 95%;
+  font-size:80%;
+  padding: 10px 20px 10px 20px;
+  background-color: $grey-color-light;
+  margin: 10px 10px;
+}
