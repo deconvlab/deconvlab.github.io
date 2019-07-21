@@ -66,7 +66,7 @@ Here, we describe one general purpose algorithm for short-and-sparse deconvoluti
 The short and sparse model asserts that the observation $\mathbf y$ can be written as a convolution of a short signal $\mathbf a_0 \in\mathbb R^p$ and a sparse signal $ \mathbf x_0\in\mathbb R^n$ $(p\ll n)$:
 \\[\mathbf y \approx \mathbf a_0*\mathbf x_0. \tag{1} \\] 
 
-This model exibits a basic signed shift symmetry: 
+This model exhibits a basic signed shift symmetry: 
 
 ![img5](/assets/fig_conv.png)
 {: style="width:80%; display:block; margin:auto; margin-top:-1em; margin-bottom:1em"}
@@ -92,9 +92,9 @@ Our approach to this problem is fairly straightforward. There are several detail
 
 The optimization problem $(2)$ is a nonconvex. The landscape of the objective is shaped by the symmetries of the problem---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, all of the local minimizers of the landscape within some certain region are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
 
-1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ closer to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a normalized  chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
+1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ closer to the set of shifts. Thus, it is advised to set the $\mathbf a^{(0)}$ as a normalized  chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
 
-	* $\mathbf a^{(0)} = [ \overbrace{0,\ldots,\, 0}^p, \mathbf y_1,\ldots \mathbf y_{p} , \overbrace{0,\ldots,\, 0}^p] \,/ \,\lVert[\mathbf y_1,\ldots,\,\mathbf y_p]\rVert_2$.  
+	* $\mathbf a^{(0)} = \frac{[ \overbrace{0,\ldots, 0}^p, \mathbf y_1,\cdots \mathbf y_{p} , \overbrace{0,\ldots, 0}^p]}{ \lVert[\mathbf y_1,\cdots ,\mathbf y_p]\rVert_2}$  
 
 	* $\mathbf x^{(0)} = \mathrm{argmin}_{\mathbf x} \,\lambda \lVert x\rVert_1 + \tfrac12\lVert \mathbf a^{(0)}*\mathbf x - \mathbf y \rVert_2^2 $  
 
@@ -117,7 +117,7 @@ To exercise the test code, please execute the following code in Matlab console:
 
 ## References ##
 
-The above exposition is based on [[Short Version](http://proceedings.mlr.press/v97/kuo19a/kuo19a.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]. Please see the papers link above for additional references and resources. 
+The above exposition is based on the paper *"Gometry and Symmetry in Short-and-Sparse Deconvolution"* [[Short Version](http://proceedings.mlr.press/v97/kuo19a/kuo19a.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]. Please see the [papers link](/papers) above for additional references and resources. 
 
 -------------------------------------------------------
 {: style="height:2px; color:#aaa; background-color:#aaa; margin-top: 3em; margin-bottom:-0.2em"}

@@ -12,18 +12,26 @@ In this background page, we explore in more detail the geometric properties of t
 ## Bilinear Lasso and Approximations ##
 
 Our study centers around the "bilinear Lasso" formulation:
+
 \\[ \min_{\mathbf a\in\mathbb S^{p-1},\, \mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2,  \\]
+
 which balances sparsity and fidelity to the observed data. 
 
+
 To study its geometry rigorously, we develop an approximation to this objective function, by approximating the loss as 
-\\[\tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2 = \tfrac12  \lVert\mathbf a*\mathbf x \rVert_2^2 - \langle \mathbf a * \mathbf x, \mathbf y \rangle +\tfrac12 \lVert \mathbf y\rVert_2^2 \approx frac12  \lVert\mathbf a \rVert_2^2 \lVert \mathbf x \rVert_2^2 - \langle \mathbf a * \mathbf x, \mathbf y \rangle +\tfrac12 \lVert \mathbf y\rVert_2^2 \\]
+
+\\[ \begin{aligned} & \tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2  \\\ 
+=\;& \tfrac12  \lVert\mathbf a * \mathbf x \rVert_2^2 - \langle \mathbf a * \mathbf x, \mathbf y \rangle +\tfrac12 \lVert \mathbf y\rVert_2^2 \\\ 
+\approx\;& \tfrac12  \lVert\mathbf a \rVert_2^2 +  \lVert \mathbf x \rVert_2^2 - \langle \mathbf a * \mathbf x, \mathbf y \rangle +\tfrac12 \lVert \mathbf y\rVert_2^2. \end{aligned}\\]
+
 Since both $\lVert\mathbf a\rVert_2^2$ and $\lVert\mathbf y\rVert_2^2$ are constants, the simplified objective becomes 
 
 \\[ \min_{\mathbf a\in\mathbb S^{p-1},\, \mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle.  \tag{3} \\]
 
 This objective still solves the short-and-sparse deconvolution, but requires more stringent signal conditions and larger sample size (longer signal $\mathbf y$); nevertheless, the geometry of this objective represents that of the bilinear-Lasso well and therefore it draws our attention to study it. Specifically, we will investigate the effect of the symmetric solutions of short signal $\mathbf a$ on the objective landscape $\varphi_{\text{ABL}}$, the marginal minimization version of $(3)$, over the sphere $\mathbb S^{p-1}$: 
 
-\\[ \min_{\mathbf a\in\mathbb S^{p-1} } \varphi_{\text{ABL}}(\mathbf a) \;\;:=\;\;  \min_{\mathbf a\in\mathbb S^{p-1} }\left( \min_{\mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle\right). \\]
+\\[ \begin{aligned} &\min_{\mathbf a\in\mathbb S^{p-1} } \varphi_{\text{ABL}}(\mathbf a) \\\ 
+:=\;&  \min_{\mathbf a\in\mathbb S^{p-1} }\left( \min_{\mathbf x\in\mathbb R^{n}} \lambda \lVert \mathbf x\rVert_1 + \tfrac12  \lVert\mathbf x\rVert_2^2 - \langle\mathbf a*\mathbf x,\mathbf y\rangle\right). \end{aligned}\\]
 
 As it turns out, the geometry of this objective will be indeed dictated by the solutions of problem, that is, the shifts of short ground truth $\mathbf a_0$. 
 
@@ -151,12 +159,12 @@ Let us consider a case where the observation of noiseless $\mathbf y$ consists o
 
 The figure shows an example where the chunk of the data $\mathbf y$ contains a few truncated shift of $\mathbf a_0$, and with simple modification (taking gradient) we can easily obtain a initial vector that stays in the subspace spanned by these shifts. When the sparsity of $\mathbf x_0$ is $\theta$, then in expectation, the number of  participating shift in this initialization scheme is roughly about $3p_0\theta$. Since, it is known that $\varphi_{\text{ABL}}$ has [nice geometry over subspace](/background/#geometry-over-union-of-subspaces) with dimension up to $4p_0\theta$, it is expected that minimization starting with the appointed $\mathbf a^{(0)}$ solves the deconvolution problem. 
 
-As it turns out, this initialization $\mathbf a^{(0)}$ using a chunk of data $\mathbf y$,  can be also applied to the practical problems using [$(2)$](/#formulation). 
+As it turns out, this initialization $\mathbf a^{(0)}$ using a chunk of data $\mathbf y$,  can be also applied to the practical problems using [bilinear-lasso](/#formulation). 
 
 ### Minimization within the subspace ###
 Finally, knowing that the function value of $\varphi_{\text{ABL}}$ is [growing away from the subspace](/background/#geometry-over-shifts-subspace), implies the small stepping gradient descent method on this objective will not leave the subspace, and will eventually converge to a local minimizer within, which are exactly the solution, shifts of $\mathbf a_0$. 
 
-To adopt this phenomenon in practice while solving [$(2)$](/#formulation) for deconvolution, since the studied objective  $\varphi_{\text{ABL}}$ is the marginal minimization over $\mathbf x$ of the Lasso-like objective, it is advised the initialization $\mathbf x^{(0)}$ should also be [the minimizer of the objective](/#minimizing-algorithm) with assigned $\mathbf a^{(0)}$, then alternation minimization of both $\mathbf a$ and $\mathbf x$ would well approximate the gradient descent procedure of minimizing $\varphi_{\text{ABL}}$ within the subspace, hence the correct solution can be attained.
+To adopt this phenomenon in practice while solving bilinear-lasso for deconvolution, since the studied objective  $\varphi_{\text{ABL}}$ is the marginal minimization over $\mathbf x$ of the Lasso-like objective, it is advised the initialization $\mathbf x^{(0)}$ should also be [the minimizer of the objective](/#minimizing-algorithm) with assigned $\mathbf a^{(0)}$, then alternation minimization of both $\mathbf a$ and $\mathbf x$ would well approximate the gradient descent procedure of minimizing $\varphi_{\text{ABL}}$ within the subspace, hence the correct solution can be attained.
 
 
 
