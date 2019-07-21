@@ -15,84 +15,82 @@ ketex: true
 *Repeating defect signature of an STM image for superconductor NaFeAs*
 {: style="float:right; height:27%; width:27%; margin:2px 0 0 10px; font-size: 60%"}
 
-Many signals and datasets in a wide range of area can be effectively expressed as superposition of short and repeating pattern.  Data of the nature is modeled as the convolution between a **short** event pattern and a **sparse** event occurrence map. Therefore, applications involving in information discovery from these signals oftentimes are treated as to decompose both short and sparse components simultaneously, even when both components are unknown.  
+Many signals and datasets contain one or more basic, repeated motifs. Data of the nature can be modeled as the convolution between a **short** signal (the motif) and a **sparse** signal that indicates where in the observed sample the motif occurs. In many applications, neither the motif, nor its locations are known ahead of time, and the goal is to determine both from only the observed data. 
 
 We call this problem **short-and-sparse deconvolution**.
 
 
-
 ## Examples ##
 
-Signals of short-and-sparse model arise naturally in a wide range of practical applications. Depending on its context, the short pattern can be realized in vastly different ways, including the excite pattern of a triggered event, the impulse function of a linear system, or simply the reoccurring pattern from a structural data. Meanwhile, the occurrence map is usually signaling the appearance of such short pattern over the domain of the signal, which in most cases resides in either temporal or spatial domain sparingly. 
-
-In order to see how signals in practice fit into short-and-sparse convolution model, we will begin with introducing scenarios where the signal can be characterized as an outcome of convolution between short and sparse:
+Signals with short-and-sparse structure arise naturally in many applications. We give several examples below: 
 
 
-### Neuron electric pulses ###
+### Neural Spike Sorting ###
 
-Neurons communicate with each other using electric pulses. It is hypothesized that most of the neurons transmit information through the frequency [[1]](/#references) or the temporal patterns from the firing pulses [[2]](/#references). Meanwhile, the firing patterns of the neurons may be varying depend on different cellular organization or brain sections. Thus, neuron electric signals can be effectively modeled as deconvolution for both the pattern of neural excitation pulses (the short event signal) and its occurrence timing (the sparse map). 
+Neurons communicate with each other using electric pulses. These pulses can be modeled as the convolution of a (short) neuron firing pattern, and a (sparse) spike train which indicates when the neuron has fired. 
+
 
 ![fig2](/assets/fig_neuron_spikes.png)
-<figcaption>Calcium ions Ca<sup>2+</sup> generate various intracellular signals which control key functions ubiquitously in all neurons. In order to probe the neuron firing patterns, neuroscientists utilize chemical fluorescent calcium indicators to signal the activation of neuron via fluorescent microscope <a href="/#references">[3]</a>.</figcaption>
+<figcaption>Calcium ions Ca<sup>2+</sup> generate various intracellular signals which control key neuron functions. To probe the neuron firing pattern, neuroscientists utilize chemical fluorescent calcium indicators to signal the activation of neuron via fluorescent microscope <a href="/#references">[3]</a>.</figcaption>
 
 
-### Defects in crystal ###
+
+### Electron Microscopy ###
 
 In a periodic crystalline structure, the positions of atoms or molecules occur on repeating fixed distances. However, the arrangement in most crystalline materials is not perfect, where the regular patterns are interrupted by defects / vacancies / impurities [[4]](/#references). Characterization of these atomic defects including the pattern (the short event signal) and the defect locations (the sparse map) affects the bulk electronic and mechanical properties for the materials such as semiconductor, superconductor, etc.
 
+
 ![fig3](/assets/fig_crystal.png)
-<figcaption>The microscopic image of high temperature superconductor polycrystalline NaFeAs under scanning tunneling microscope (STM). The superconductivity of iron-based material is often related to a nematic state where the symmetry of crystal is broken, creating defects of specific pattern within the structure, which can be characterized using short-and-sparse convolution model. <a href="/#references">[5]</a>.</figcaption>
+<figcaption>The microscopic image of high temperature superconductor polycrystalline NaFeAs under transmission electron microscope (TEM). The superconductivity of iron-based material is often directly related to a nematic state where the symmetry of crystal is broken, therefore it is of great interest for researchers in material science  to study its defect pattern and structure.   <a href="/#references">[5]</a>.</figcaption>
 
 
 
 ### Natural image deblurring ###
 
-Image deblurring is a classical problem in natural image processing, where the goal is to remove the blurring artifact when taking an image in natural scenes cause by defocus aberration or motion blur from imaging devices (i.e. cameras). It is commonly acknowledged that many natural images are mainly consists of smooth subsections and sharp edges, meaning that the gradient of natural images tends to be spatially sparse [[6]](/#references). The blurring procedure on an image affects mostly on the parts of image with edges; therefore, the gradient of the blurry image can be effectively modeled as convolution between the short blurring kernel (the short event pattern) and the sparse gradients of the original sharp image (the sparse map). Deblurring of natural image can be done via removing this blurring kernel with utilization of  the sparsity prior on image gradient.     
+Image deblurring is a classical problem in natural image processing, where the goal is to remove the blurring due to defocus or camera motion. In this scenario, the observed image can be modeled as the convolution of a short blur kernel (which models defocus and sensor motion) with a sharp natural image. While natural images are not sparse, their gradients are typically sparse or compressible, reflecting the fact that natural images typically have relatively few sharp edges [[6]](/#references). The gradient of the observed image can therefore be modeled as the convolution of a short blur kernel and a sparse signal (the true gradient). 
 
 ![fig4](/assets/fig_deblurring.png)
-<figcaption>An natural image is taken while the camera  undergoing rapid movement, causing a blurring effect on the received image with the blur kernel shaped as the moving trajectory. In most of such cases the blur kernel is unknown, thus the blind deconvolution procedure is required to restore the high resolution image.  </figcaption>
+<figcaption>An image taken with a moving camera can be modeled as the convolution of a short blur kernel (representing the motion of the camera) with a sharp natural image.</figcaption>
 
 
 
 ## Algorithm Overview ##
 
-Short-and-sparse deconvolution can be solved via intuitive and simple algorithm. Many variations of algorithm has been proposed under various problem setting, tailored to suit the specific need with prior knowledge of signal structure.  
+Short-and-sparse deconvolution can be solved via simple, intuitive algorithms. Because variants of short-and-sparse deconvolution arise in a number of applications, many algorithms have been proposed for this problem, and tailored to suit the specific properties of applications. 
 
-Here, we will introduce a general purpose algorithm for short-and-sparse deconvolution. The most important feature, is that the algorithm finds one of the "symmetric solutions"---the shifted and scaled variant of the ground truth short and sparse components.
+Here, we describe one general purpose algorithm for short-and-sparse deconvolution, which in some situations recovers the correct short and sparse components, up to a scale and shift symmetry that is intrinsic to the problem.
 
 
 ###  Symmetric Solutions ###
 
-Write the ground truth signal pair as the short  $\mathbf a_0 \in\mathbb R^p$ and the sparse $ \mathbf x_0\in\mathbb R^n$ $(p\ll n)$, where the observation $\mathbf y$ is the noiseless convolution between the two signals, namely 
+The short and sparse model asserts that the observation $\mathbf y$ can be written as a convolution of a short signal $\mathbf a_0 \in\mathbb R^p$ and a sparse signal $ \mathbf x_0\in\mathbb R^n$ $(p\ll n)$:
+\\[\mathbf y \approx \mathbf a_0*\mathbf x_0. \tag{1} \\] 
 
-\\[\mathbf y = \mathbf a_0*\mathbf x_0. \tag{1} \\] 
-
-Then due to the intrinsic ambiguity of the short-and-sparse deconvolution, there will be multiple possibilities for the convolution of a short and sparse pairs forms $\mathbf y$ besids $\mathbf a_0*\mathbf x_0$. More importantly, these different signal pairs can be specified as the shifted and scaled version of ground truth $(\mathbf a_0, \mathbf x_0)$
+This model exibits a basic signed shift symmetry: 
 
 ![img5](/assets/fig_conv.png)
 {: style="width:80%; display:block; margin:auto; margin-top:-1em; margin-bottom:1em"}
 <figcaption> The observation $\mathbf y$ (left) is the convolution of ground truth signals $(\mathbf a_0, \mathbf x_0)$ (right, top). If we shift the short $\mathbf a_0$ to the left, and the sparse $\mathbf x_0$ to the right by the same distance, the convolution of the new pair of signal (right, bot) also generates $\mathbf y$. </figcaption>
 
-Because of this ambiguity, it is impossible for us to find out the exact generating $(\mathbf a_0, \mathbf x_0)$ solely dependent on the observation $\mathbf y$. Nevertheless, in most of the applications, we are willing to know the shape of the short signal, or the pattern of the sparsity map; while the exact scaling of signals and the timing / location of the map is not quite interested. Hence we would glad to accept any shifts and scaled version of $(\mathbf a_0, \mathbf x_0)$ as the solution to short-and-sparse deconvolution, these are called as the symmetric solutions.  
+Because of this ambiguity, it is only possible to recover the generating pair $(\mathbf a_0, \mathbf x_0)$ up to scale and shift.
 
 
 ### Formulation ###
 
-To find the shifted and scaled variation of $\mathbf a_0\in\mathbb R^p$ and $\mathbf x_0\in\mathbb R^n$, the algorithm optimize two variables, the short pattern $\mathbf a\in\mathbb R^{3p}$ and the sparsity map $\mathbf x\in\mathbb R^{n+2p}$, with respect to  minimizing the objective that consists both (i). the sparsity of $\mathbf x$, and (ii). the data infidelity between observation $\mathbf y$ and the convolution $\mathbf a *\mathbf x$:
-
+To find a shifted and scaled version of $\mathbf a_0\in\mathbb R^p$ and $\mathbf x_0\in\mathbb R^n$, our algorithm optimizes two variables, the short pattern $\mathbf a\in\mathbb R^{3p}$ and the sparsity map $\mathbf x\in\mathbb R^{n+2p}$. A natural approach is to minimize an objective that balances (i) the sparsity of $\mathbf x$ with (ii) the fidelity of $\mathbf a * \mathbf x$ to the observed data $\mathbf y$:
 
 \\[ \min_{\mathbf a\in\mathbb S^{3p-1},\, \mathbf x\in\mathbb R^{n+2p}} \overbrace{\lambda \lVert\mathbf x\rVert_1}^{\text{sparsity}} + \overbrace{\tfrac12  \lVert\mathbf a*\mathbf x - \mathbf y\rVert_2^2}^{\text{data fidelity}}. \tag{2}  \\]
 
-It is fairly straight forward, but because of the symmetric solutions, there is some important detail need to be taken care of during minimization:
+Our approach to this problem is fairly straightforward. There are several details that are helpful for coping with the symmetry structure of the problem:
 
-1. *Sphere*: The algorithm asks to optimize the problem with the short variable $\mathbf a$ stays on $\ell^2$-sphere, enforcing $\lVert \mathbf a\rVert_2=1$. Of course, the actual $\mathbf a_0$ may not have unit norm, which, due the the ambiguity, is something we will never know.
+1. *Sphere*: We constrain the short variable $\mathbf a$ to have unit $\ell^2$ norm: $\lVert \mathbf a\rVert_2=1$. 
 
-2. *Zero Padding*: The algorithm optimize the  variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accommodate all possible shifted $(\mathbf a_0, \mathbf x_0)$ as  good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
+2. *Zero Padding*: The algorithm optimizes the variables $\mathbf a,\mathbf x$ on a higher dimensional space, to accommodate all possible shifts $(\mathbf a_0, \mathbf x_0)$ as good solutions. If the ground truth $\mathbf a_0$ has length $p$, then it is advised to optimize $\mathbf a$ of length $p+2p$, and similarly for $\mathbf x$ of length $n+2p$. Accordingly, the corresponding observation signal $\mathbf y$ should be zero padded on two sides depending on the assumed length of $\mathbf a_0$ during optimization.
 
 
 ### Minimizing Algorithm ###
 
-The problem $(2)$ is a non-convex problem. The landscape of the objective is forged by the symmetric solutions---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, all of the local minimizers of the landscape within some certain region are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
+The optimization problem $(2)$ is a nonconvex. The landscape of the objective is shaped by the symmetries of the problem---shifts of $(\mathbf a_0, \mathbf x_0)$. More importantly, all of the local minimizers of the landscape within some certain region are exactly the shifts, meaning that if we set up the algorithm correctly then the short-and-sparse deconvolution can be solved via minimizing $(2)$.
 
 1. *Initialization*: Knowing that the solutions are the shifts of $\mathbf a_0$ and $\mathbf x_0$ suggests it would be better starts the minimization with initializer $(\mathbf a^{(0)}, \mathbf x^{(0)})$ closer to the set of shifts. Thus, it is adviced to set the $\mathbf a^{(0)}$ as a normalized  chunk of data $\mathbf y$ (which indeed will be closer to the solutions compares to, say,  a random vector), and the  $\mathbf x^{(0)}$ as the minimizer of $(2)$ with fixed $\mathbf a = \mathbf a^{(0)}$ 
 
@@ -100,13 +98,13 @@ The problem $(2)$ is a non-convex problem. The landscape of the objective is for
 
 	* $\mathbf x^{(0)} = \mathrm{argmin}_{\mathbf x} \,\lambda \lVert x\rVert_1 + \tfrac12\lVert \mathbf a^{(0)}*\mathbf x - \mathbf y \rVert_2^2 $  
 
-2. *Minimization*: Starting from the initializer, performing conventional alternation gradient descent on both variables $\mathbf a$ and $\mathbf x$ suffices to solve the problem. Here, the notion of gradient on $\mathbf a$ is Riemmanian, which is nothing special but the conventional gradient defined over spherical domain. Also, the penalty variable in $(2)$, $\lambda$, can be set according to the sparsity level $ \theta$ of the true map $\mathbf x_0$, such that $\lambda \lessapprox 1/\sqrt{p\theta}$.
+2. *Minimization*: Starting from the initializer, performing conventional alternating gradient descent on both variables $\mathbf a$ and $\mathbf x$ suffices to solve the problem. Here, the notion of gradient on $\mathbf a$ is Riemmanian, which is nothing special but the conventional gradient defined over spherical domain. Also, the penalty variable in $(2)$, $\lambda$, can be set according to the sparsity level $ \theta$ of the true map $\mathbf x_0$, such that $\lambda \lessapprox 1/\sqrt{p\theta}$.
 
 
 
 ## Code Package ##
 
-The solver of short-and-sparse deconvolution (Matlab) can be downloaded from the following github link: 
+A Matlab solver for short-and-sparse deconvolution can be downloaded from the following github link: 
 
 [https://github.com/sbdsphere/sbd-ipalm](https://github.com/sbdsphere/sbd-ipalm) 
 {:style="text-align:center"}
@@ -117,21 +115,12 @@ To exercise the test code, please execute the following code in Matlab console:
 
 
 
-## Resources ##
+## References ##
 
-* Paper: 
-	* Theories on short-and-sparse deconvolution: [[Short Version](http://proceedings.mlr.press/v97/kuo19a/kuo19a.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]
-	* Algorithms and applications: [To appear]
-
-* Other media:
-	* Introduction on short-and-sparse deconvolution: [[slides](/assets/slides_SaSD.pdf)] [[poster](/assets/poster_SaSD.pdf)]  
-
-
+The above exposition is based on [[Short Version](http://proceedings.mlr.press/v97/kuo19a/kuo19a.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]. Please see the papers link above for additional references and resources. 
 
 -------------------------------------------------------
 {: style="height:2px; color:#aaa; background-color:#aaa; margin-top: 3em; margin-bottom:-0.2em"}
-
-#### References ####
 
 {:.ref}
 [1]. Hubel, David H., and Torsten N. Wiesel. "Receptive fields of single neurones in the cat's striate cortex." *The Journal of physiology* 148.3 (1959): 574-591.
