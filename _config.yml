@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: SaS Deconvolution
 author: DeconvLab
-email: deconvlab@gmail.com 
+email: deconvlab@gmail.com
 description: © This project is supported by Columbia University and National Science Foundation. All Rights Reserved.
 date: 07/20/2019
 
