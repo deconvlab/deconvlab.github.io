@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-## Lab Mates ##
+## People ##
 
 * [John Wright](http://www.columbia.edu/~jw2966/)
 * [Abhay Pasupathy](https://physics.columbia.edu/people/profile/428)
