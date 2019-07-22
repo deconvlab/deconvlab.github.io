@@ -29,7 +29,7 @@ In review, 2019
 
 [Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
 {:.title}
-Yenson Lau, Qing Qu, Han-Wen Kuo, Yuqian Zhang, John Wright
+Yenson Lau, Qing Qu, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
 In review, 2019
 {:.booktitle}
@@ -40,7 +40,7 @@ In review, 2019
 <div id="bibtex-sasgeo-long" class="bibtex">
 @article{lau2019short,
   title={Short-and-Sparse Deconvolution — A Geometric Approach},
-  author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhang, Yuqian and Wright, John},
+  author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhou, Pengcheng and Zhang, Yuqian and Wright, John},
   journal={Preprint},
   year={2019}
 }
@@ -116,7 +116,7 @@ Proceedings of the 36th International Conference on Machine Learning, 2019
 
 [Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
 {:.title}
-Yenson Lau, Qing Qu, Han-Wen Kuo, Yuqian Zhang, John Wright
+Yenson Lau, Qing Qu, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
 In review, 2019
 {:.booktitle}
@@ -127,7 +127,7 @@ In review, 2019
 <div id="bibtex-sasgeo" class="bibtex">
 @article{lau2019short,
   title={Short-and-Sparse Deconvolution — A Geometric Approach},
-  author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhang, Yuqian and Wright, John},
+  author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhou, Pengcheng and Zhang, Yuqian and Wright, John},
   journal={Preprint},
   year={2019}
 }
