@@ -14,14 +14,15 @@
 }
 
 .site-title {
-  @include relative-font-size(1.6);
+  @include relative-font-size(1.38);
   font-weight: 400;
   letter-spacing: -1px;
-  margin-bottom: 0;
-  margin-left:45px;
+  margin-left: 0;
   float: left;
   font-variant:small-caps; 
   z-index: 1;
+  margin-top:auto;
+  margin-bottom:auto;
 
   @include media-query($on-palm) {
     position:absolute;
@@ -120,8 +121,12 @@
       display: inline;
       padding: 0;
 
+
+      margin-top: auto;
+      margin-bottom: auto;
       margin-right:0;
       margin-left: 25px;
+
     }
   }
 }
