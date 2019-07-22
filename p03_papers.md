@@ -8,7 +8,7 @@ permalink: /papers/
 
 [Geometry and Symmetry in Short-and-Sparse Deconvolution](https://arxiv.org/pdf/1901.00256.pdf)
 {:.title}
-Han-Wen Kuo, Yenson Lau, Yuqian Zhang, John Wright
+Han-Wen Kuo, Yuqian Zhang, Yenson Lau, John Wright
 {:.author}
 In review, 2019
 {:.booktitle}
@@ -19,7 +19,7 @@ In review, 2019
 <div id="bibtex-sas-long" class="bibtex">
 @article{kuo2019geometry,
   title={Geometry and symmetry in short-and-sparse deconvolution},
-  author={Kuo, Han-Wen and Lau, Yenson and Zhang, Yuqian and Wright, John},
+  author={Kuo, Han-Wen and Zhang, Yuqian and Lau, Yenson and  Wright, John},
   journal={arXiv preprint arXiv:1901.00256},
   year={2019}
 }
@@ -95,7 +95,7 @@ In review, 2019
 
 [Geometry and Symmetry in Short-and-Sparse Deconvolution](/assets/SaSD_icml2019.pdf)
 {:.title}
-Han-Wen Kuo, Yenson Lau, Yuqian Zhang, John Wright
+Han-Wen Kuo, Yuqian Zhang, Yenson Lau, John Wright
 {:.author}
 Proceedings of the 36th International Conference on Machine Learning, 2019
 {:.booktitle}
@@ -106,7 +106,7 @@ Proceedings of the 36th International Conference on Machine Learning, 2019
 <div id="bibtex-sas" class="bibtex">
 @inproceedings{kuo2019geometry,
   title={Geometry and Symmetry in Short-and-Sparse Deconvolution},
-  author={Kuo, Han-Wen and Lau, Yenson and Zhang, Yuqian and Wright, John},
+  author={Kuo, Han-Wen and Zhang, Yuqian and Lau, Yenson and Wright, John},
   booktitle={International Conference on Machine Learning},
   pages={3570--3580},
   year={2019}

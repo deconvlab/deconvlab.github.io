@@ -4,7 +4,11 @@ title: Packages
 permalink: /packages/
 ---
 
-1. For Matlab code of real data experiments, please clone from: [sbd/ipalm](https://github.com/sbdsphere/sbd-ipalm) (github link)
-2. Execute the following code in Matlab console  
+A Matlab solver for short-and-sparse deconvolution can be downloaded from the following github link: 
 
-		>> sbd_example
+[https://github.com/sbdsphere/sbd-ipalm](https://github.com/sbdsphere/sbd-ipalm) 
+{:style="text-align:center"}
+
+To exercise the test code, please execute the following code in Matlab console:
+
+	$ sbd_example
