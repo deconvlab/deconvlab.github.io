@@ -4,7 +4,7 @@ title: Papers
 permalink: /papers/
 ---
 
-## Jounal Submissions ##
+## Jounal Articles ##
 
 [Geometry and Symmetry in Short-and-Sparse Deconvolution](https://arxiv.org/pdf/1901.00256.pdf)
 {:.title}
