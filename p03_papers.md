@@ -67,7 +67,26 @@ In review, 2018
 }
 </div>
 
+[Dictionary Learning in Fourier Transform Scanning Tunneling
+Spectroscopy](https://arxiv.org/pdf/1807.10752.pdf)
+{:.title}
+Sky C. Cheung, John Y. Shin, Yenson Lau, Zhengyu Chen, Ju
+Sun, Yuqian Zhang, John N. Wright, and Abhay N. Pasupathy1,
+{:.author}
+Preprint, 2018
+{:.booktitle}
 
+<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="https://arxiv.org/pdf/1807.10752.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
+<span><a role="button" onclick="toggle_block('bibtex-fourier')" >bibtex</a></span>
+
+<div id="bibtex-fourier" class="bibtex">
+@article{cheung2018dictionary,
+  title={Dictionary Learning in Fourier Transform Scanning Tunneling Spectroscopy},
+  author={Cheung, Sky C and Shin, John Y and Lau, Yenson and Chen, Zhengyu and Sun, Ju and Zhang, Yuqian and Wright, John N and Pasupathy, Abhay N},
+  journal={arXiv preprint arXiv:1807.10752},
+  year={2018}
+}
+</div>
 
 
 
