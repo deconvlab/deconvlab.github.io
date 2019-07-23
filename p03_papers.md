@@ -71,7 +71,7 @@ In review, 2018
 Spectroscopy](https://arxiv.org/pdf/1807.10752.pdf)
 {:.title}
 Sky C. Cheung, John Y. Shin, Yenson Lau, Zhengyu Chen, Ju
-Sun, Yuqian Zhang, John N. Wright, and Abhay N. Pasupathy1,
+Sun, Yuqian Zhang, John N. Wright, and Abhay N. Pasupathy,
 {:.author}
 Preprint, 2018
 {:.booktitle}
