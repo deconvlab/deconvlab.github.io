@@ -29,7 +29,7 @@ In review, 2019
 
 [Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
 {:.title}
-Yenson Lau, Qing Qu, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
+Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
 In review, 2019
 {:.booktitle}
@@ -135,7 +135,7 @@ Proceedings of the 36th International Conference on Machine Learning, 2019
 
 [Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
 {:.title}
-Yenson Lau, Qing Qu, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
+Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
 In review, 2019
 {:.booktitle}
@@ -197,3 +197,12 @@ Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2
   year={2017}
 }
 </div>
+
+
+
+-------------------------------------------------------
+{: style="height:2px; color:#aaa; background-color:#aaa; margin-top: 3em; margin-bottom:-0.2em"}
+
+{:.ref}
+^ equal contribution
+
