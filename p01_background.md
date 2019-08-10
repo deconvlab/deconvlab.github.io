@@ -132,7 +132,7 @@ Concretely, the random vector $\mathbf x_0$ can be written as $\mathbf x_0 = \ma
 {: style="width:90%; display:block; margin:auto; margin-bottom:0.8em; margin-top:1.5em"}
 <figcaption> If $\mathbf x_0$ is a random Bernoulli-Gaussian vector with sparsity rate $\theta$, then naturally if $\theta$ is higher then short-and-sparse deconvolution problem becomes harder.   </figcaption>
 
-As expected, when the sparsity $\theta$ is higher, the short-and-sparse deconvolution problem becomes harder, and vise versa. Notice, that if the sparsity rate $\theta$ is lesser then $1/p_0$, there will have many isolated $\mathbf a_0$ in the observation signal $\mathbf y$ that can be found via simply algorithm, which makes the short-and-sparse deconvolution a trivial problem. The algorithm we are studying works under more complicating signal condition, namely when $\theta \geq 1/p_0$.
+As expected, when the sparsity $\theta$ is higher, the short-and-sparse deconvolution problem becomes harder, and vice versa. Notice, that if the sparsity rate $\theta$ is lesser then $1/p_0$, there will have many isolated $\mathbf a_0$ in the observation signal $\mathbf y$ that can be found via simply algorithm, which makes the short-and-sparse deconvolution a trivial problem. The algorithm we are studying works under more complicating signal condition, namely when $\theta \geq 1/p_0$.
 
 
 ### Sparsity-coherence tradeoff ###
