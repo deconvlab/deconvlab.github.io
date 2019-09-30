@@ -117,7 +117,7 @@ To exercise the test code, please execute the following code in Matlab console:
 
 ## References ##
 
-* For detaled explanation, please refer to the  [background page](/background).
+* For detailed explanation, please refer to the  [background page](/background).
 
 * The above exposition is based on the paper *"Gometry and Symmetry in Short-and-Sparse Deconvolution"* [[Short Version](/assets/SaSD_icml2019.pdf)]  [[Long Version](https://arxiv.org/pdf/1901.00256.pdf)]. Please refer to the [papers page](/papers) for additional references and resources. 
 
