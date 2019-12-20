@@ -10,7 +10,7 @@ permalink: /papers/
 {:.title}
 Han-Wen Kuo, Yuqian Zhang, Yenson Lau, John Wright
 {:.author}
-SIAM Journal on Mathematics of Data Science, 2019 (to appear)
+SIAM Journal on Mathematics of Data Science, 2019 
 {:.booktitle}
 
 <span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="https://arxiv.org/pdf/1901.00256.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
@@ -27,14 +27,14 @@ SIAM Journal on Mathematics of Data Science, 2019 (to appear)
 </div>
 
 
-[Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
+[Short-and-Sparse Deconvolution — A Geometric Approach](/assets/iclr_2020_sas.pdf)
 {:.title}
 Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
-In review, 2019
+In review, 2020
 {:.booktitle}
 
-<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/neurips_2019_sas.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
+<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/iclr_2020_sas.pdf"> paper </a></span> <span class="glyphicon glyphicon-paperclip"></span>
 <span style="margin-right:5px"><a role="button" onclick="toggle_block('bibtex-sasgeo-long')" >bibtex</a></span>
 
 <div id="bibtex-sasgeo-long" class="bibtex">
@@ -42,7 +42,7 @@ In review, 2019
   title={Short-and-Sparse Deconvolution — A Geometric Approach},
   author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhou, Pengcheng and Zhang, Yuqian and Wright, John},
   journal={Preprint},
-  year={2019}
+  year={2020}
 }
 }
 </div>
@@ -52,7 +52,7 @@ In review, 2019
 {:.title}
 Yuqian Zhang, Han-Wen Kuo, John Wright
 {:.author}
-In review, 2018
+IEEE Transactions on Information Theory, 2019
 {:.booktitle}
 
 <span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="https://arxiv.org/pdf/1806.00338.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
@@ -90,23 +90,24 @@ Preprint, 2018
 
 
 
-[On the Global Geometry of Sphere-Constrained Sparse Blind Deconvolution](https://arxiv.org/pdf/1901.01913.pdf) 
+[On the Global Geometry of Sphere-Constrained Sparse Blind Deconvolution](https://ieeexplore.ieee.org/document/8823055) 
 {:.title}
 Yuqian Zhang, Yenson Lau, Han-Wen Kuo, Sky Cheung, Abhay Pasupathy, John Wright
 {:.author}
-In review, 2019
+IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019
 {:.booktitle}
 
-<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="https://arxiv.org/pdf/1901.01913.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
+<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="https://arxiv.org/pdf/1901.01913.pdf"> paper </a></span> <span class="glyphicon glyphicon-paperclip"></span>
 <span><a role="button" onclick="toggle_block('bibtex-sphere-long')" >bibtex</a></span>
 
 <div id="bibtex-sphere-long" class="bibtex">
-@article{zhang2019global,
-  title={On the Global Geometry of Sphere-Constrained Sparse Blind Deconvolution},
-  author={Zhang, Yuqian and Lau, Yenson and Kuo, Han-Wen and Cheung, Sky and Pasupathy, Abhay and Wright, John},
-  journal={arXiv preprint arXiv:1901.01913},
-  year={2019}
-}
+@article{zhang2019global, 
+author={Y. {Zhang} and Y. {Lau} and H. {Kuo} and S. {Cheung} and A. {Pasupathy} and J. N. {Wright}}, 
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+title={On the Global Geometry of Sphere-Constrained Sparse Blind Deconvolution}, 
+year={2019}, 
+doi={10.1109/TPAMI.2019.2939237}, 
+ISSN={0162-8828}}
 </div>
 
 
@@ -133,11 +134,11 @@ Proceedings of the 36th International Conference on Machine Learning, 2019
 </div>
 
 
-[Short-and-Sparse Deconvolution — A Geometric Approach](/assets/neurips_2019_sas.pdf)
+[Short-and-Sparse Deconvolution — A Geometric Approach](https://openreview.net/pdf?id=Byg5ZANtvH)
 {:.title}
 Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 {:.author}
-In review, 2019
+International Conference on Learning Representations, 2020
 {:.booktitle}
 
 <span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/neurips_2019_sas.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
@@ -147,8 +148,8 @@ In review, 2019
 @article{lau2019short,
   title={Short-and-Sparse Deconvolution — A Geometric Approach},
   author={Lau, Yenson and Qu, Qing and Kuo, Han-Wen and Zhou, Pengcheng and Zhang, Yuqian and Wright, John},
-  journal={Preprint},
-  year={2019}
+  journal={International Conference on Learning Representations},
+  year={2020}
 }
 }
 </div>
