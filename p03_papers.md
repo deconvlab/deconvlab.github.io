@@ -34,7 +34,7 @@ Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 In review, 2020
 {:.booktitle}
 
-<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/iclr_2020_sas.pdf"> paper </a></span> <span class="glyphicon glyphicon-paperclip"></span>
+<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/iclr_2020_sas.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
 <span style="margin-right:5px"><a role="button" onclick="toggle_block('bibtex-sasgeo-long')" >bibtex</a></span>
 
 <div id="bibtex-sasgeo-long" class="bibtex">
@@ -141,7 +141,7 @@ Yenson Lau^, Qing Qu^, Han-Wen Kuo, Pengcheng Zhou, Yuqian Zhang, John Wright
 International Conference on Learning Representations, 2020
 {:.booktitle}
 
-<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/neurips_2019_sas.pdf"> preprint </a></span> <span class="glyphicon glyphicon-paperclip"></span>
+<span class="glyphicon glyphicon-download-alt"></span><span style="margin-right:5px"><a role="button" href="/assets/neurips_2019_sas.pdf"> paper </a></span> <span class="glyphicon glyphicon-paperclip"></span>
 <span style="margin-right:5px"><a role="button" onclick="toggle_block('bibtex-sasgeo')" >bibtex</a></span>
 
 <div id="bibtex-sasgeo" class="bibtex">
